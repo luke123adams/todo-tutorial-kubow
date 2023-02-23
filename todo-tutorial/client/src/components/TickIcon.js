@@ -1,6 +1,5 @@
 export default function TickIcon() {
     return (
-      <div>
-      </div>
+      <i class="fa-solid fa-check"></i>
     );
   }
