@@ -21,7 +21,6 @@ export default function ListItem({ task, getData }) {
   return (
     <div className="list-item">
        <div className="info-container">
-      <TickIcon/>
       <p>{task.title}</p>
       <ProgressBar/>
         </div>

@@ -62,7 +62,7 @@ export default function Modal({mode, setShowModal, getData, task}) {
       <div className="overlay">
        <div className="modal">
          <div className="form-title-container">
-           <h3>Let's {mode} your task</h3>
+           <h3>Lets {mode} your fantasy name</h3>
            <button onClick={()=>setShowModal(false)}>X</button>
         </div>
 
@@ -70,7 +70,7 @@ export default function Modal({mode, setShowModal, getData, task}) {
           <input 
             required
             maxLength={30}
-            placeholder="your task goes here"
+            placeholder="your fantasy name goes here"
             name="title"
             value={data.title}
             onChange={handleChange}
