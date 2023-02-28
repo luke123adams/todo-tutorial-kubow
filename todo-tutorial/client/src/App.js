@@ -2,11 +2,13 @@ import ListHeader from "./components/ListHeader"
 import ListItem from './components/ListItem'
 import { useEffect, useState } from 'react'
 import Auth from "./components/Auth"
+import { useCookies } from 'react-cookie'
 
 export default function App() {
-  const userEmail = 'a@test.com'
+  const [cookies, setCookie, removeCookie] = useCookies(null)
+  const userEmail = cookies.Email
   const [ tasks, setTasks ] = useState(null)
-  const authToken = false
+  const authToken = cookies.AuthToken
 
   async function getData() {
     
@@ -38,6 +40,7 @@ export default function App() {
     {authToken && 
     <>
     <ListHeader listName={'My fave fantasy names'} getData={getData} />
+    <p>Welcome back, {userEmail}</p>
     {sortedTasks?.map((task)=><ListItem key={task.id} task={task} getData={getData}/>)}
     </>}
     </div>

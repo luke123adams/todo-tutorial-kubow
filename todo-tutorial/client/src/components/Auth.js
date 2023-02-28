@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useCookies } from 'react-cookie'
 
 export default function Auth() {
+  const [cookies, setCookie, removeCookie] = useCookies()
   const [error, setError] = useState(null);
   const [isLogIn, setIsLogin] = useState(true);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
+
+  console.log(cookies)
 
   console.log(email, password, confirmPassword)
 
@@ -31,6 +35,15 @@ export default function Auth() {
     );
 
     const data = await response.json();
+    
+    if (data.detail) {
+      setError(data.detail)
+    } else {
+      setCookie('Email', data.email)
+      setCookie('AuthToken', data)
+
+      window.location.reload()
+    }
   };
 
   return (
